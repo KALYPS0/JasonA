@@ -11,6 +11,8 @@ let yuCorner;
 let ylCorner;
 let funcHowRun=false;
 let funcHelloRun=false;
+let funcHighRun=false;
+let circle=0;
 
 
 function setup(){
@@ -39,7 +41,13 @@ function draw(){
 
 	howFeeling();
 
-
+  s=random(400);
+  if (s<100){
+    s = s +100;
+  }else{
+    s=random(400);
+  }
+  highlights(random(width),random(height),s,10);
 
 }
 
@@ -52,6 +60,26 @@ function draw(){
 // function sad(){
 
 // }
+
+function highlights(x,y,size,rings){
+  if (funcHighRun==false){
+
+    if (backG>=1500){
+
+      let steps = size/rings;
+      let grayvalues = 40/rings;
+      r=random(255);
+      g=random(255);
+      b=random(255);
+
+      for (i = 0; i < 8; i++) {
+        stroke(255);
+        fill(r, 0, 0, i*grayvalues);
+        ellipse(x, y, size - i*steps, size - i*steps);
+      }
+    }
+  }
+}
 
 function howFeeling(){
 	if (funcHowRun==false){
